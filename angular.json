@@ -1,0 +1,160 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "odds-notification": {
+      "projectType": "library",
+      "root": "projects/odds-notification",
+      "sourceRoot": "projects/odds-notification/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/odds-notification/tsconfig.lib.json",
+            "project": "projects/odds-notification/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/odds-notification/src/test.ts",
+            "tsConfig": "projects/odds-notification/tsconfig.spec.json",
+            "karmaConfig": "projects/odds-notification/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/odds-notification/tsconfig.lib.json",
+              "projects/odds-notification/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "odds-notification-app": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/odds-notification-app",
+      "sourceRoot": "projects/odds-notification-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/odds-notification-app",
+            "index": "projects/odds-notification-app/src/index.html",
+            "main": "projects/odds-notification-app/src/main.ts",
+            "polyfills": "projects/odds-notification-app/src/polyfills.ts",
+            "tsConfig": "projects/odds-notification-app/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/odds-notification-app/src/favicon.ico",
+              "projects/odds-notification-app/src/assets"
+            ],
+            "styles": [
+              "projects/odds-notification-app/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/odds-notification-app/src/environments/environment.ts",
+                  "with": "projects/odds-notification-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "odds-notification-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "odds-notification-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "odds-notification-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/odds-notification-app/src/test.ts",
+            "polyfills": "projects/odds-notification-app/src/polyfills.ts",
+            "tsConfig": "projects/odds-notification-app/tsconfig.spec.json",
+            "karmaConfig": "projects/odds-notification-app/karma.conf.js",
+            "assets": [
+              "projects/odds-notification-app/src/favicon.ico",
+              "projects/odds-notification-app/src/assets"
+            ],
+            "styles": [
+              "projects/odds-notification-app/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/odds-notification-app/tsconfig.app.json",
+              "projects/odds-notification-app/tsconfig.spec.json",
+              "projects/odds-notification-app/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/odds-notification-app/e2e/protractor.conf.js",
+            "devServerTarget": "odds-notification-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "odds-notification-app:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "odds-notification"
+}
