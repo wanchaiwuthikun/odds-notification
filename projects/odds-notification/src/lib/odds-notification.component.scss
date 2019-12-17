@@ -1,0 +1,7 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+::ng-deep .popover-body {
+  padding: 0.5rem 0.75rem;
+  color: #212529;
+  background-color: red;
+}
