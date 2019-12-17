@@ -17,7 +17,15 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "odds-notification": [
+        "dist/odds-notification"
+      ],
+      "odds-notification/*": [
+        "dist/odds-notification/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
