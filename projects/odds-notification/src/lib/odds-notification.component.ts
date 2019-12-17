@@ -2,11 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'odds-notification',
-  template: `
-    <p>
-      odds-notification works!
-    </p>
-  `,
+  templateUrl: './odds-notification.component.html',
   styles: []
 })
 export class OddsNotificationComponent implements OnInit {
