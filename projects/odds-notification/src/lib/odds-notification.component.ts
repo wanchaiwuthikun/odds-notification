@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-odds-notification',
+  selector: 'odds-notification',
   template: `
     <p>
       odds-notification works!
