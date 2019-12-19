@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { OddsNotificationComponent } from './odds-notification.component';
 import { NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
   declarations: [OddsNotificationComponent],
   imports: [
-    NgbPopoverModule
+    NgbPopoverModule,
+    CommonModule
   ],
   exports: [OddsNotificationComponent]
 })

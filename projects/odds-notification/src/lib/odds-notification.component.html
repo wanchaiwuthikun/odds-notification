@@ -1,8 +1,34 @@
-<p>
-  odds-notification works!
-</p>
+<a id="notification" class="notification" placement="bottom" [ngbPopover]="blockNotificationList"
+  [hidden]="hide" [popoverClass]="'popover-custom'" [class.notification-new]="notificationStatus | async"
+  (click)="onClickNotification()">
+  <div class="icon-bell" alt="notification"></div>
+</a>
 
-<button type="button" class="btn btn-outline-secondary mr-2" placement="top"
-  ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus." popoverTitle="Popover on top">
-  Popover on top
-</button>
+<ng-template #blockNotificationList>
+  <div class="notification-block">
+
+    <div class="notification-header">
+      <h4> Notification </h4>
+      <a id="close-notification">
+        <div class="img-close"></div>
+      </a>
+    </div>
+    <div class="notification-body">
+      <ng-container *ngIf="notificationLatest.total === 0">
+        <div class="empty-notification">
+        </div>
+      </ng-container>
+      <ng-container *ngIf="notificationLatest.total > 0">
+        <div class="notification-content" *ngFor="let notification of notificationLatest.notification">
+        </div>
+      </ng-container>
+    </div>
+    <div class="notification-footer" *ngIf="notificationLatest.total > 0">
+      <a href="javascript:void(0);" id="view-all-notification" (click)="goShowAllPage()">
+        <span>แสดงทั้งหมด</span>
+        <span>({{ notificationLatest.total }})</span>
+      </a>
+    </div>
+
+  </div>
+</ng-template>
