@@ -6,9 +6,5 @@
     "@angular/core": "^8.2.14",
     "@ng-bootstrap/ng-bootstrap": "^5.1.4",
     "bootstrap": "^4.4.1"
-  },
-  "bundledDependencies": [
-    "@ng-bootstrap/ng-bootstrap",
-    "bootstrap"
-  ]
+  }
 }
